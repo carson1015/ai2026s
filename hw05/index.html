@@ -1,21 +1,16 @@
 <!doctype html>
 <html lang="zh-Hant-TW">
 <head>
-<!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- D3, jquery -->
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
 
-<!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
-<title>作業五
-</title>
-<!-- https://alexlenail.me/NN-SVG/about.html -->
+<title>作業五</title>
 <link rel="icon" href="../hw00/favicon.svg"/>
 <style type="text/css">
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap');
@@ -133,7 +128,6 @@
 
 <div class="container-fluid">
 
-  <!-- ---------------------------------------------- -->
   <div class="row hw12 toprow">
     <div class="col twenty"><a href="../hw00/index.html">00</a></div>
     <div class="col twenty"><a href="../hw01/index.html">01</a></div>
@@ -144,23 +138,18 @@
     <div class="col twenty"><a href="../hw06/index.html">06</a></div>
   </div>
 
-  <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
       <h1>作業 05</h1>
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      本次作業是接觸文生圖的初步應用，使用的是目前提供個人使用功能最齊全的文生圖工具ComfyUI，
-      透過節點式的方式連接模塊，構建工作流並執行產生圖象，過程有趣且也能透過該過程理解模型運作
-      流程，最後根據主題成功生成芙莉蓮的相關圖像。
+      在本次作業中，我學習了如何建置與操作 ComfyUI 工作流。一開始在執行文生圖時遇到了模型架構與提示詞編碼不匹配的錯誤，經過排查與流程對接後，在 Medium baseline 中成功使用 Obsession 模型搭配精細的提示詞，讓 AI 繪製出芙莉蓮與欣梅爾在花海中的經典氛圍。隨後在 Strong baseline 挑戰中，我透過更換模型，改用熱門的 SD1.5 動漫模型 Counterfeit-V3.0 重新測試生成，體會到不同 Checkpoint 對於二次元角色五官與畫面線條細節的處理差異。這次實驗讓我更熟悉節點式 AI 繪圖的邏輯，收穫非常豐富。
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
       <table>
@@ -184,19 +173,18 @@
         <tr>
           <td><input type="checkbox" class="flipswitch" id="myCheckbox3" checked></td>
           <td id='m3'>2</td>
-          <td>Strong baseline - 替換模型完成辛梅爾文生圖</td>
+          <td>Strong baseline - 替換模型完成欣梅爾文生圖</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox4"></td>
-          <td id='m4'>-10</td>
-          <td>沒有寫100字心得</td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox4" checked></td>
+          <td id='m4'>0</td>
+          <td>完成 100 字心得填寫</td>
         </tr>
 
       </table>
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty" style="background-color:#00AC48;">    
       <figure>
@@ -206,7 +194,6 @@
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty" style="background-color:#ff0000;"> 
       <figure>
@@ -226,35 +213,20 @@
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty" style="background-color:#7030a0;">    
       <figure>
-        <figcaption>替換Ckeckpoint、LoRA完成芙莉蓮、欣梅爾文生圖</figcaption>
-        <a href="https://civitai.com/models/820208/obsession-illustrious-xl">Checkpoint連結</a>
-        <br>
-        <a href="https://civitai.com/models/1204563?modelVersionId=1356500">LoRA連結1</a>
-        <br>
-        <a href="https://civitai.com/models/1201355/r754496-or-shiiros-styles-or-niji">LoRA連結2</a>
-        <p>1024 * 1280</p>
-        <p>LoRA1 Strength : 0.5</p>
-        <p>LoRA2 Strength : 0.45</p>
-        <p>r17329_illu, xxx667_illu, very awa, anime screencap, masterpiece,best quality,1boy, 1girl, 
-          frieren, himmel \(sousou no frieren\), outdoors, upper body, eye contact, light blue hair, 
-          cape, capelet, earrings, dappled sunlight, day, hand on another&#039;s head, kesyeru, sousou no frieren, 
-          &lt;lora:r17329_illu-000015:0.45&gt;, &lt;lora:XXX477-000016:0.5&gt;,
-        </p>
-        <p>nsfw,lowres,bad anatomy,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,
-          low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry,artist name,
-        </p>
+        <figcaption>替換Checkpoint完成文生圖</figcaption>
+        <a href="https://civitai.com/models/4468/counterfeit-v30">Checkpoint連結</a>
+        <p>1024 * 576</p>
+        <p>high-resolution, detailed anime illustration of Himmel the hero from Sousou no Frieren, handsome young man, short blue hair, blue eyes, wearing a white and blue hero tunic, flowing red cape, a sword sheathed at his waist, gentle and nostalgic smile, beautiful natural fantasy landscape, high quality</p>
+        <p>text, watermark, low quality, bad anatomy, bad hands, cropped, worst quality</p>
         <img src="img2.png" width="100%"/>
       </figure>
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
-
-<script>
+  <script>
   $(function() {
     var f = function() {
       $(this).next().text($(this).is(':checked') ? '做完' : '未做完');
@@ -266,9 +238,6 @@
   d3.select("#myCheckbox2").on("change",update);
   d3.select("#myCheckbox3").on("change",update);
   d3.select("#myCheckbox4").on("change",update);
-  // d3.select("#myCheckbox5").on("change",update);
-  // d3.select("#myCheckbox6").on("change",update);
-  // d3.select("#myCheckbox7").on("change",update);
 
   update();
   
@@ -291,7 +260,6 @@
     if (d3.select("#myCheckbox4").property("checked")){
       score += parseInt(d3.select('#m4').html());   
     }
-
 
     d3.select("#myTotal").html(score);    
   }
