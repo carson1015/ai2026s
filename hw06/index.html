@@ -1,20 +1,16 @@
 <!doctype html>
 <html lang="zh-Hant-TW">
 <head>
-<!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- D3, jquery -->
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
 
-<!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <title>作業六</title>
-<!-- https://alexlenail.me/NN-SVG/about.html -->
 <link rel="icon" href="../hw00/favicon.svg"/>
 <style type="text/css">
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap');
@@ -132,7 +128,6 @@
 
 <div class="container-fluid">
 
-  <!-- ---------------------------------------------- -->
   <div class="row hw12 toprow">
     <div class="col twenty"><a href="../hw00/index.html">00</a></div>
     <div class="col twenty"><a href="../hw01/index.html">01</a></div>
@@ -143,23 +138,23 @@
     <div class="col twenty"><a href="../hw06/index.html">06</a></div>
   </div>
 
-  <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
       <h1>作業 06</h1>
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
       本次作業是接觸文生影片的初步應用，使用的是目前提供個人使用功能最齊全的文生圖工具ComfyUI，
       以及使用在Civitai上開源的模型，透過節點式的方式連接模塊，構建工作流並執行產生影片，
       過程有趣且也能透過該過程理解模型運作流程，最後成功生成影像。
+      在實驗過程中發現，若提示詞包含過於複雜的動態肢體動作（例如踢球或鏟球），AI 在生成連續影格時容易導致畫面扭曲崩壞。
+      因此我重新調整了策略，將 Prompt 簡化為「主體人物靜止、僅改變環境與服裝細節」的靜態構圖（如長椅四季、靜態足球員、賽博龐克場景切換）。
+      這樣的調整讓 Deforum 影片的成像極為穩定流暢，非常成功！
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
       <table>
@@ -186,21 +181,20 @@
           <td>Strong baseline - 生成完整角色動畫</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox4"></td>
-          <td id='m4'>-10</td>
-          <td>沒有寫100字心得</td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox4" checked></td>
+          <td id='m4'>0</td>
+          <td>已經寫完100字心得（原本未寫扣10分，改為0分）</td>
         </tr>
 
       </table>
     </div>
   </div>
 
-  <!-- ------------------------------------------------>
   <div class="row hw12 bottomrow">
     <div class="col-md-12 twenty" style="background-color:#00AC48;">
       <figcaption>Comfy UI 環境設定完成</figcaption>
       <a href="https://civitai.com/models/61643?modelVersionId=67841">CheckPoint: based66_v30</a><br>
-      <a href="https://civitai.com/models/69977/chibi-laugh">LoRA:  chibi-laugh</a><br>  
+      <a href="https://civitai.com/models/69977/chibi-laugh">LoRA:  chibi-laugh</a><br> 
       <img src="1.png"  width="100%"><br>
     </div>
   </div>
@@ -223,67 +217,61 @@
   
   <div class="row hw12 bottomrow">
     <div class="col-md-4 twenty" style="background-color:#7030a0;">
-      <figcaption>生成完整角色動畫 - 1</figcaption>
+      <figcaption>生成完整角色動畫 - 1 (公園長椅四季變換)</figcaption>
       <img src="3.gif" width="100%"><br>
-      <td> 使用提示詞:
-          "0" :"spring day, floral skirt, wind, hair accessories, smile",
-          "10" :"spring day, floral skirt, wind, hair accessories, smile",
-          "20" :"spring day, floral skirt, wind, hair accessories, smile",
-          "30" :"summer day, short-sleeved dress, straw hat",
-          "40" :"summer day, short-sleeved dress, straw hat",
-          "50" :"summer day, short-sleeved dress, straw hat",
-          "60" :"fall day, sweater, slim jeans, wind, fallen leaves",
-          "70" :"fall day, sweater, slim jeans, wind, fallen leaves",
-          "80" :"fall day, sweater, slim jeans, wind, fallen leaves",
-          "90" :"winter, down jacket, woolen hat, ear protection gloves, snowflakes",
-          "100" :"winter, down jacket, woolen hat, ear protection gloves, snowflakes",
-          "110" :"winter, down jacket, woolen hat, ear protection gloves, snowflakes"
-      </td>
+      <div> 使用提示詞:<br>
+          "0" :"spring, sitting on a wooden bench, denim jacket, white shirt, cherry blossoms blooming, soft warm sunlight, falling petals",<br>
+          "10" :"spring, sitting on a wooden bench, denim jacket, white shirt, cherry blossoms blooming, soft warm sunlight, falling petals",<br>
+          "20" :"spring, sitting on a wooden bench, denim jacket, white shirt, cherry blossoms blooming, soft warm sunlight, falling petals",<br>
+          "30" :"summer, sitting on a wooden bench, striped short-sleeve shirt, shorts, green lush trees, bright sunlight, dappled shadows",<br>
+          "40" :"summer, sitting on a wooden bench, striped short-sleeve shirt, shorts, green lush trees, bright sunlight, dappled shadows",<br>
+          "50" :"summer, sitting on a wooden bench, striped short-sleeve shirt, shorts, green lush trees, bright sunlight, dappled shadows",<br>
+          "60" :"autumn, sitting on a wooden bench, cozy orange sweater, beanie, fallen orange and brown leaves, sunset light, slight wind",<br>
+          "70" :"autumn, sitting on a wooden bench, cozy orange sweater, beanie, fallen orange and brown leaves, sunset light, slight wind",<br>
+          "80" :"autumn, sitting on a wooden bench, cozy orange sweater, beanie, fallen orange and brown leaves, sunset light, slight wind",<br>
+          "90" :"winter, sitting on a wooden bench, thick down jacket, scarf, gloves, snowy background, bare trees, cold breathing steam",<br>
+          "100" :"winter, sitting on a wooden bench, thick down jacket, scarf, gloves, snowy background, bare trees, cold breathing steam",<br>
+          "110" :"winter, sitting on a wooden bench, thick down jacket, scarf, gloves, snowy background, bare trees, cold breathing steam"
+      </div>
     </div>
     <div class="col-md-4 twenty" style="background-color:#7030a0;">
-      <figcaption>生成完整角色動畫 - 2</figcaption>
+      <figcaption>生成完整角色動畫 - 2 (足球靜態肖像變換)</figcaption>
       <img src="4.gif" width="100%"><br>
-      <td> 使用提示詞:
-          "0" :"1girl, black hair, ponytail, opaque white cotton sundress, modest, morning beach, clear sky, soft morning light, ocean waves, walking",
-          "10" :"1girl, black hair, ponytail, opaque white cotton sundress, modest, morning beach, clear sky, soft morning light, ocean waves, walking",
-          "20" :"1girl, black hair, ponytail, opaque white cotton sundress, modest, morning beach, clear sky, soft morning light, ocean waves, walking",
-          "30" :"1girl, black hair, ponytail, opaque white cotton sundress, modest, sunny beach, noon, bright sunlight, clear blue sky, sparkling water",
-          "40" :"1girl, black hair, ponytail, opaque white cotton sundress, modest, sunny beach, noon, bright sunlight, clear blue sky, sparkling water",
-          "50" :"1girl, black hair, ponytail, opaque white cotton sundress, modest, sunny beach, noon, bright sunlight, clear blue sky, sparkling water",
-          "60" :"1girl, black hair, ponytail, opaque white cotton sundress, modest, sunset beach, golden hour, warm lighting, dramatic sky, ocean breeze",
-          "70" :"1girl, black hair, ponytail, opaque white cotton sundress, modest, sunset beach, golden hour, warm lighting, dramatic sky, ocean breeze",
-          "80" :"1girl, black hair, ponytail, opaque white cotton sundress, modest, sunset beach, golden hour, warm lighting, dramatic sky, ocean breeze",
-          "90" :"1girl, black hair, ponytail, opaque white cotton sundress, modest, night beach, starry sky, moonlight, dark ocean, glowing reflections",
-          "100" :"1girl, black hair, ponytail, opaque white cotton sundress, modest, night beach, starry sky, moonlight, dark ocean, glowing reflections",
-          "110" :"1girl, black hair, ponytail, opaque white cotton sundress, modest, night beach, starry sky, moonlight, dark ocean, glowing reflections"
-          <br><br>
-          使用負面提示詞:
-          (bad quality, worst quality:1.2), sheer, transparent, translucent, revealing, wet clothes
-      </td>
+      <div> 使用提示詞:<br>
+          "0" :"street football pitch, sitting on a ball, sportswear, sunset lighting, smiling, warm soft light, background dust",<br>
+          "10" :"street football pitch, sitting on a ball, sportswear, sunset lighting, smiling, warm soft light, background dust",<br>
+          "20" :"street football pitch, sitting on a ball, sportswear, sunset lighting, smiling, warm soft light, background dust",<br>
+          "30" :"locker room, sitting on a bench, clean team jersey, holding a helmet, tired but focused, cinematic moody lighting, water bottle nearby",<br>
+          "40" :"locker room, sitting on a bench, clean team jersey, holding a helmet, tired but focused, cinematic moody lighting, water bottle nearby",<br>
+          "50" :"locker room, sitting on a bench, clean team jersey, holding a helmet, tired but focused, cinematic moody lighting, water bottle nearby",<br>
+          "60" :"packed stadium center, standing still, muddy jersey, looking up at the crowd, rain on face, dramatic stadium floodlights, breathing out visible steam",<br>
+          "70" :"packed stadium center, standing still, muddy jersey, looking up at the crowd, rain on face, dramatic stadium floodlights, breathing out visible steam",<br>
+          "80" :"packed stadium center, standing still, muddy jersey, looking up at the crowd, rain on face, dramatic stadium floodlights, breathing out visible steam",<br>
+          "90" :"championship podium, standing still, gold medal around neck, kissing a trophy, emotional smile, confetti slowly falling, intense bright lights",<br>
+          "100" :"championship podium, standing still, gold medal around neck, kissing a trophy, emotional smile, confetti slowly falling, intense bright lights",<br>
+          "110" :"championship podium, standing still, gold medal around neck, kissing a trophy, emotional smile, confetti slowly falling, intense bright lights"
+      </div>
     </div>
     <div class="col-md-4 twenty" style="background-color:#7030a0;">
-      <figcaption>生成完整角色動畫 - 3</figcaption>
+      <figcaption>生成完整角色動畫 - 3 (賽博龐克風格變換)</figcaption>
       <img src="6.gif" width="100%"><br>
-      <td> 使用提示詞:
-          "0" :"1boy, handsome, short hair, workwear jacket, cargo pants, morning beach, ocean waves, clear sky, walking",
-          "10" :"1boy, handsome, short hair, workwear jacket, cargo pants, morning beach, ocean waves, clear sky, walking",
-          "20" :"1boy, handsome, short hair, workwear jacket, cargo pants, morning beach, ocean waves, clear sky, walking",
-          30" :"1boy, handsome, short hair, workwear vest, white t-shirt, cargo shorts, sunny beach, ocean, blue sky, wearing sunglasses",
-          "40" :"1boy, handsome, short hair, workwear vest, white t-shirt, cargo shorts, sunny beach, ocean, blue sky, wearing sunglasses",
-          "50" :"1boy, handsome, short hair, workwear vest, white t-shirt, cargo shorts, sunny beach, ocean, blue sky, wearing sunglasses",
-          "60" :"1boy, handsome, short hair, unbuttoned workwear shirt, cargo pants, sunset beach, golden hour, wind, dramatic lighting",
-          "70" :"1boy, handsome, short hair, unbuttoned workwear shirt, cargo pants, sunset beach, golden hour, wind, dramatic lighting",
-          "80" :"1boy, handsome, short hair, unbuttoned workwear shirt, cargo pants, sunset beach, golden hour, wind, dramatic lighting",
-          "90" :"1boy, handsome, short hair, dark workwear jacket, cargo pants, night beach, starry sky, moonlight, ocean reflections",
-          "100" :"1boy, handsome, short hair, dark workwear jacket, cargo pants, night beach, starry sky, moonlight, ocean reflections",
-          "110" :"1boy, handsome, short hair, dark workwear jacket, cargo pants, night beach, starry sky, moonlight, ocean reflections"
-      </td>
+      <div> 使用提示詞:<br>
+          "0" :"cyberpunk city, neon lights, glowing visor, oversized hoodie, heavy rain, reflection",<br>
+          "10" :"cyberpunk city, neon lights, glowing visor, oversized hoodie, heavy rain, reflection",<br>
+          "20" :"cyberpunk city, neon lights, glowing visor, oversized hoodie, heavy rain, reflection",<br>
+          "30" :"hacker den, holographic screens, cybernetic arm, techwear jacket, cables, dim light",<br>
+          "40" :"hacker den, holographic screens, cybernetic arm, techwear jacket, cables, dim light",<br>
+          "50" :"hacker den, holographic screens, cybernetic arm, techwear jacket, cables, dim light",<br>
+          "60" :"mega corporate skyscraper, sleek suit, data glasses, floating drones, clean glass reflection",<br>
+          "70" :"mega corporate skyscraper, sleek suit, data glasses, floating drones, clean glass reflection",<br>
+          "80" :"mega corporate skyscraper, sleek suit, data glasses, floating drones, clean glass reflection",<br>
+          "90" :"highway skyline, flying cars, leather jacket, LED face mask, neon trails, speed blur",<br>
+          "100" :"highway skyline, flying cars, leather jacket, LED face mask, neon trails, speed blur",<br>
+          "110" :"highway skyline, flying cars, leather jacket, LED face mask, neon trails, speed blur"
+      </div>
     </div>
   </div>
-  <!-- ------------------------------------------------>
-  <!-- ------------------------------------------------>
-
-  <!-- ------------------------------------------------>
+  </div>
 
 
 <script>
@@ -298,9 +286,6 @@
   d3.select("#myCheckbox2").on("change",update);
   d3.select("#myCheckbox3").on("change",update);
   d3.select("#myCheckbox4").on("change",update);
-  // d3.select("#myCheckbox5").on("change",update);
-  // d3.select("#myCheckbox6").on("change",update);
-  // d3.select("#myCheckbox7").on("change",update);
 
   update();
   
@@ -323,7 +308,6 @@
     if (d3.select("#myCheckbox4").property("checked")){
       score += parseInt(d3.select('#m4').html());   
     }
-
 
     d3.select("#myTotal").html(score);    
   }
