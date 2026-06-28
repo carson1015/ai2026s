@@ -33,8 +33,8 @@
 <body>
     
     <script>
-        // 設定 SVG 大小
-        var margin = {top: 20, right: 30, bottom: 50, left: 60},
+        // 修改點 1：將 right 加大到 50，避免最右邊的紅框被 SVG 外框切掉
+        var margin = {top: 20, right: 50, bottom: 50, left: 60},
             width = 1080 - margin.left - margin.right,
             height = 580 - margin.top - margin.bottom;
 
@@ -152,32 +152,49 @@
                 });
 
             // ============================================================
-            // 新增修改點：在圖表右下角 (SSIM=1.0, LPIPS=0.0) 繪製自己的參考圖片與紅框
+            // 修改點 2：在圖表右下角 (軸線端點交會處) 繪製自己的參考圖片與紅框
             // ============================================================
-            var myBoxSize = 36; // 大小與其他數據點一致
+            var myBoxSize = 36; 
             
+            // 直接定位在 x(1.0) 和 y(0.0) 也就是 (width, height)
             var myRefGroup = svg.append("g")
                 .attr("class", "my-reference-node")
-                // 使用比例尺直接定位到最右下角 (x(1) 和 y(0))
-                .attr("transform", "translate(" + x(1.0) + "," + y(0.0) + ")");
+                .attr("transform", "translate(" + x(1.0) + "," + y(0.0) + ")")
+                .style("cursor", "pointer");
 
-            // 畫紅框
+            // 畫紅框：因為端點在右下角，我們要往左、往上畫，才不會出界
             myRefGroup.append("rect")
                 .attr("width", myBoxSize)
                 .attr("height", myBoxSize)
-                .attr("x", -myBoxSize / 2) // 置中對齊
-                .attr("y", -myBoxSize / 2) // 置中對齊
+                .attr("x", -myBoxSize) // 向左延伸
+                .attr("y", -myBoxSize) // 向上延伸
                 .style("fill", "rgba(0,0,0,0)")
                 .style("stroke", "#ff0000") // 鮮紅色邊框
                 .style("stroke-width", "2px");
 
-            // 放你自己的「秋」字圖片
+            // 放你自己的「秋」字圖片 (內縮 1px 避免壓到紅框)
             myRefGroup.append("image")
-                .attr("xlink:href", "img/" + myImg) // 指向 img/113590017.png
-                .attr("x", -17)
-                .attr("y", -17)
-                .attr("width", 34)
-                .attr("height", 34);
+                .attr("xlink:href", "img/" + myImg) 
+                .attr("x", -myBoxSize + 1)
+                .attr("y", -myBoxSize + 1)
+                .attr("width", myBoxSize - 2)
+                .attr("height", myBoxSize - 2)
+                .style("pointer-events", "none");
+
+            // 幫右下角獨立的這張圖片也綁上 Hover 放大效果
+            myRefGroup.on("mouseover", function() {
+                    tooltip.transition().duration(200).style("opacity", .9);
+                    tooltip.html(
+                        "<div style='margin-bottom:5px; font-weight:bold; font-size: 1.1em;'>" + myImg + "</div>" +
+                        "<img src='img/" + myImg + "' alt='Handwriting' style='width: 100%; height: auto; border: 1px solid #ccc;'>"
+                    );
+                    var tooltipNode = document.getElementById("tooltip");
+                    tooltip.style("left", (d3.event.pageX - tooltipNode.offsetWidth - 8) + "px")
+                           .style("top", (d3.event.pageY - tooltipNode.offsetHeight - 8) + "px");
+                })
+                .on("mouseout", function() {
+                    tooltip.transition().duration(500).style("opacity", 0);
+                });
             // ============================================================
             
         });
