@@ -122,26 +122,13 @@
   .bottomrow {
     margin-bottom: 36px;
   }
-
-  /*     助教版本的圖片固定在右下角
-    這裡是新增的樣式
-  */
-  #myImage {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      width: 100px; /* 這裡設定圖片顯示的寬度，你可以自行調整 */
-      z-index: 1000; /* 確保圖片顯示在所有內容之上 */
-      border: 2px solid white; /* 可選：加上邊框 */
-      box-shadow: 0 0 5px rgba(0,0,0,0.5); /* 可選：加上陰影 */
-  }
 </style>
 </head>
 <body>
 
 <div class="container-fluid">
 
-    <div class="row hw12 toprow">
+  <div class="row hw12 toprow">
     <div class="col twenty"><a href="../hw00/index.html">00</a></div>
     <div class="col twenty"><a href="../hw01/index.html">01</a></div>
     <div class="col twenty"><a href="../hw02/index.html">02</a></div>
@@ -151,19 +138,19 @@
     <div class="col twenty"><a href="../hw06/index.html">06</a></div>
   </div>
 
-    <div class="row hw12">
+  <div class="row hw12">
     <div class="col-md-12 twenty">
       <h1>作業 04</h1>
     </div>
   </div>
 
-    <div class="row hw12">
+  <div class="row hw12">
     <div class="col-md-12 twenty">
       在這項字體生成的期末實驗中，我們以「秋」字為基準，透過 LPIPS 與 SSIM 兩個指標將自己設計的字體與全班同學進行相似度比對。最終的圖表繪製結果非常有趣，因為我的「秋」字在視覺分布上顯得極具「孤立感」——數據直接證實了我的字體結構和全班所有人都「完全不像」。  
     </div>
   </div>
 
-    <div class="row hw12">
+  <div class="row hw12">
     <div class="col-md-12 twenty">
       <table>
         <tr>
@@ -198,7 +185,7 @@
     </div>
   </div>
 
-    <div class="row hw12">
+  <div class="row hw12">
     <div class="col-md-12 twenty">
       <button type="button" onclick="location.href='https://drive.google.com/drive/folders/1fnne5G31725MxpTPT2OaBNRHSXx6Kzyx?usp=drive_link'">
         前往「秋」資料夾
@@ -206,7 +193,7 @@
     </div>
   </div>
 
-    <div class="row hw12">
+  <div class="row hw12">
     <div class="col-md-12 twenty">
       <span>CSV檔位置連結</span>
       <br>
@@ -217,7 +204,7 @@
     </div>
   </div>
 
-    <div class="row hw12" align="center">
+  <div class="row hw12" align="center">
     <div class="col-md-12 twenty">
       <figcaption>SSIM / LPIPS - 互動式 D3.js</figcaption>
       <iframe 
@@ -230,7 +217,7 @@
       </iframe>
     </div>
   </div>
-  </div> <img id="myImage" src="113590017.png" alt="我的秋字圖片">
+  </div>
 
 <script>
   $(function() {
@@ -269,7 +256,6 @@
     if (d3.select("#myCheckbox4").property("checked")){
       score += parseInt(d3.select('#m4').html());   
     }
-
 
     d3.select("#myTotal").html(score);    
   }
