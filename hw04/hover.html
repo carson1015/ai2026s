@@ -8,7 +8,7 @@
         #tooltip {
             position: absolute;
             text-align: center;
-            width: 120px;       
+            width: 120px;      
             height: auto;      
             padding: 8px;
             font: 12px sans-serif;
@@ -76,7 +76,6 @@
             var y = d3.scaleLinear()
                 .domain([0, 0.7]) // lpips
                 .range([ height, 0]);
-
 
             // 加入Y軸以及標籤
             svg.append("g")
@@ -151,6 +150,35 @@
                         .duration(500)
                         .style("opacity", 0);
                 });
+
+            // ============================================================
+            // 新增修改點：在圖表右下角 (SSIM=1.0, LPIPS=0.0) 繪製自己的參考圖片與紅框
+            // ============================================================
+            var myBoxSize = 36; // 大小與其他數據點一致
+            
+            var myRefGroup = svg.append("g")
+                .attr("class", "my-reference-node")
+                // 使用比例尺直接定位到最右下角 (x(1) 和 y(0))
+                .attr("transform", "translate(" + x(1.0) + "," + y(0.0) + ")");
+
+            // 畫紅框
+            myRefGroup.append("rect")
+                .attr("width", myBoxSize)
+                .attr("height", myBoxSize)
+                .attr("x", -myBoxSize / 2) // 置中對齊
+                .attr("y", -myBoxSize / 2) // 置中對齊
+                .style("fill", "rgba(0,0,0,0)")
+                .style("stroke", "#ff0000") // 鮮紅色邊框
+                .style("stroke-width", "2px");
+
+            // 放你自己的「秋」字圖片
+            myRefGroup.append("image")
+                .attr("xlink:href", "img/" + myImg) // 指向 img/113590017.png
+                .attr("x", -17)
+                .attr("y", -17)
+                .attr("width", 34)
+                .attr("height", 34);
+            // ============================================================
             
         });
 
